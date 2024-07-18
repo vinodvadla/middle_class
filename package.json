@@ -1,0 +1,40 @@
+{
+  "name": "middle_class_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npm sequelize-cli db:seed:all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
+    "mysql2": "^3.10.3",
+    "nodemon": "^3.1.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  },
+  "_moduleAliases": {
+    "@models": "src/models",
+    "@controllers": "src/controllers",
+    "@adminControllers": "src/controllers/admin",
+    "@appControllers": "src/controllers/app",
+    "@restarantControllers": "src/controllers/restaurant",
+    "@routes": "src/routes",
+    "@adminRoutes": "src/routes/admin",
+    "@appRoutes": "src/routes/app",
+    "@restaurantRoutes": "src/routes/restaurant",
+    "@services": "src/services",
+    "@utils": "src/utils",
+    "@async-handler": "src/utils/AsyncHandler.js"
+  }
+}
