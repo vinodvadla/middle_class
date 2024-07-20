@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "7144",
-    "database": "middle_class",
+    "database": "middle_class_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
