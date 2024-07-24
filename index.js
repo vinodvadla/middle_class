@@ -5,9 +5,22 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const { sequelize } = require("./src/models");
 const routes = require("./src/routes");
+const cors = require("cors");
+
+const corsOptions = {
+  origin: ["*"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.set("static", "./uploads");
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request for ${req.url}`);
+  console.log("Body:", req.body);
+  next();
+});
 app.get("/", (req, res, next) => {
   res.send("Hello World!");
 });

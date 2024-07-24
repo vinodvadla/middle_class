@@ -4,6 +4,7 @@ const { generateSlug } = require("../../utils/functions");
 
 const create = asyncHandler(async (req, res, next) => {
   const { name } = req.body;
+  console.log(req.body);
   const slug = generateSlug(name);
   console.log(slug);
   const exists = await Restaurant.findOne({

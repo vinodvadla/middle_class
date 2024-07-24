@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const restaurant = require("../../models/restaurant");
 
 const Resschema = Joi.object({
   name: Joi.string().required().min(3),
@@ -13,6 +12,7 @@ const Resschema = Joi.object({
 
 const validate = (schema) => {
   return async (req, res, next) => {
+    console.log(req.body);
     const { error } = await schema.validate(req.body);
     if (error) {
       console.log(error);
