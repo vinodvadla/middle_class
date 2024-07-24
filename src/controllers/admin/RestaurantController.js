@@ -1,7 +1,7 @@
 const { Restaurant } = require("../../models");
 const asyncHandler = require("../../utils/AsyncHandler");
 const { generateSlug } = require("../../utils/functions");
-
+ 
 const create = asyncHandler(async (req, res, next) => {
   const { name } = req.body;
   console.log(req.body);
