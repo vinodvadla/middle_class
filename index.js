@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 const { sequelize } = require("./src/models");
 const routes = require("./src/routes");
 const cors = require("cors");
+const { client: RedisClient } = require("./src/services/redis");
 
 const corsOptions = {
   origin: ["*"],
@@ -30,6 +31,10 @@ app.use("/v1", routes);
 app.use((err, req, res, next) => {
   console.log(err);
   res.status(500).json({ success: false, message: err.message });
+});
+
+RedisClient.connect().then(() => {
+  console.log("REDIS CONNECTED");
 });
 sequelize.sync({ alter: false }).then(() => {
   app.listen(PORT, () => {
