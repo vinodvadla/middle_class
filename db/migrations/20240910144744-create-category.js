@@ -9,10 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      image: {
         type: Sequelize.STRING
       },
-      slug: {
+      name: {
         type: Sequelize.STRING
       },
       status: {

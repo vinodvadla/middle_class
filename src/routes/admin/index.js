@@ -1,6 +1,4 @@
 const router = require("express").Router();
-const restaurantRoter = require("./restaurantRoutes");
-
-router.use("/restaurant", restaurantRoter);
-
+const categoryRoutes = require("./categoryRoutes");
+router.use("/category", categoryRoutes);
 module.exports = router;

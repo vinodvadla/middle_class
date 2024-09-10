@@ -1,7 +1,8 @@
 "use strict";
 const { Model } = require("sequelize");
+const subcategory = require("./subcategory");
 module.exports = (sequelize, DataTypes) => {
-  class Item extends Model {
+  class Attribute extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,26 +10,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(models.Category, {
-        foreignKey: "itemId",
-        through: models.ItemCategory,
+      this.belongsTo(models.SubCategory, {
+        foreignKey: "parentId",
+        as: "subcategory",
       });
     }
   }
-  Item.init(
+
+  Attribute.init(
     {
+      parentId: DataTypes.INTEGER,
       name: DataTypes.STRING,
-      description: DataTypes.STRING,
-      restaurantId: DataTypes.STRING,
-      price: DataTypes.STRING,
-      discount: DataTypes.STRING,
-      startTime: DataTypes.STRING,
-      endTime: DataTypes.STRING,
+      type: DataTypes.ENUM(["number", "text"]),
     },
     {
       sequelize,
-      modelName: "Item",
+      modelName: "Attribute",
     }
   );
-  return Item;
+  return Attribute;
 };

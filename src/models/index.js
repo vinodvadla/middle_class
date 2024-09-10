@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 const process = require("process");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../../db/config/database.json")[env];
+const config = require(__dirname + "/../../db/config.json")[env];
 const db = {};
 
 let sequelize;
@@ -44,17 +44,16 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-const syncDB = async () => {
+const syncDb = async () => {
   try {
-    await sequelize.sync({ alter: true, force: false });
-    console.log("Database sync successful");
+    await sequelize.sync({ alter: true });
+    console.log("Database sync successfull");
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-// syncDB();
-
+// syncDb();
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
